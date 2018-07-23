@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  javatest3mysql:
+    image: javatest3mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: dockermysqlroot123
+    container_name: mysql
+  app:
+    image: javatest3
+    depends_on:
+      - javatest3mysql
+    environment:
+      DRIVER: com.mysql.jdbc.Driver
+      URL: jdbc:mysql://172.17.0.1:3306/sakila
+      USER: root
+      MYSQL_ROOT_PASSWORD: dockermysqlroot123
+      COUNTRYID: 27
+      CUSTOMERID: 27
+    container_name: javatest3
+

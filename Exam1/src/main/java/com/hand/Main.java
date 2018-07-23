@@ -107,14 +107,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int countryId = Integer.MAX_VALUE, customerId = Integer.MAX_VALUE;
-        for (int i = 0; i < args.length; i++) {
-            if ("countryid".equalsIgnoreCase(args[i])) {
-                countryId = Integer.parseInt(args[i + 1]);
-            } else if ("customerid".equalsIgnoreCase(args[i])) {
-                customerId = Integer.parseInt(args[i + 1]);
-            }
-        }
+        System.out.println("country:" + System.getenv("COUNTRYID"));
+        System.out.println("customer:" + System.getenv("CUSTOMERID"));
+        int countryId = Integer.parseInt(System.getenv("COUNTRYID"));
+        int customerId = Integer.parseInt(System.getenv("CUSTOMERID"));
 
         Connection connection = ConnectionFactory.getInstance().getConnection();
         if (countryId != Integer.MAX_VALUE) {

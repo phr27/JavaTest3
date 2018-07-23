@@ -24,19 +24,11 @@ public class ConnectionFactory {
     }
 
     static {
-        Properties properties = new Properties();
-        InputStream inputStream = ConnectionFactory.class.getClassLoader().getResourceAsStream("dbconfig.properties");
-        try {
-            properties.load(inputStream);
-        } catch (IOException e) {
-            System.out.println("读取配置文件错误");
-            e.printStackTrace();
-        }
 
-        driver = properties.getProperty("driver");
-        url = properties.getProperty("url");
-        user = properties.getProperty("user");
-        password = properties.getProperty("password");
+        driver = System.getenv("DRIVER");
+        url = System.getenv("URL");
+        user = System.getenv("USER");
+        password = System.getenv("PASSWORD");
     }
 
     private ConnectionFactory() {
